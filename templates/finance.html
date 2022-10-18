@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='styles/finance-style.css') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/debt.png') }}" />
+
+    <title>Debt App - Finance</title>
+  </head>
+  <body>
+    <div class="center">
+      <div class="center_box">
+        <h1>Finance</h1>
+          <form action="/del_debt" method="post">
+            <label> Clear Customer Debt </label><br />
+            <input type="text" id="" class="inputfield" placeholder="Enter customer's name" /><br><br>
+            <input type="submit" class="Buttons" value="Insert" />            
+          </form>
+      </div>
+    </div>
+
+    {{ message }}
+  </body>
+</html>
