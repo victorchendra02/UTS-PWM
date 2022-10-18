@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles/index-style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <title>Debt App - Log In</title>
+  </head>
+  <body>
+    <h1>Welcome to Admin Page</h1>
+    <form action="/add_trans" method="post">
+      <input type="text" name="cusname" placeholder="Customer Name" />
+      <input type="text" name="amount" placeholder="Customer Debt" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    {{ message }}
+  </body>
+</html>

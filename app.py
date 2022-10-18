@@ -1,3 +1,4 @@
+from argparse import Namespace
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -63,6 +64,18 @@ class Customer(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+@app.route('/finance')
+def finance():
+    return render_template('finance.html')
+
+@app.route('/manager')
+def manager():
+    return render_template('manager.html')
+
 
 @app.route('/add_cus', methods=['GET', 'POST'])
 def addcus():
@@ -75,3 +88,23 @@ def addcus():
     db.session.commit()
     
     return render_template('manager.html')
+
+@app.route('/add_trans', methods=['GET', 'POST'])
+def addtrans():
+    customer_name = request.form.get('cusname')
+    debt_amount = request.form.get('amount')
+
+    all_cus = Customer.query.order_by(Customer.customer_name).all()
+    names = []
+    for customer in all_cus:
+        names.append(customer.customer_name)
+
+    if customer_name in names:
+        new_trans = Transactions(customer_name, debt_amount)        
+
+        db.session.add(new_trans)
+        db.session.commit()
+
+        return render_template('admin.html', message="Transaction added succesfully")
+    else:
+        return render_template('admin.html', message=f"No customer with name {customer_name}")
