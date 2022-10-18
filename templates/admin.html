@@ -8,20 +8,23 @@
         <link rel="stylesheet" type=text/css href="{{url_for('static', filename='styles/admin-style.css')}}" />
         <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='assets/debt.png')}}" />
 
-        <title>Debt App - Admin</title>
-    </head>
-    <body>
+    <title>Debt App - Admin</title>
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="center_box">
         <h1>Admin Page</h1>
         <form action="/add_trans" method="post">
-            <label>Customer Name</label><br />
-            <input class="input-field" type="text" name="cusname" placeholder="Enter customer name..." /><br /><br />
-
-            <label>Dept Amount</label><br />
-            <input class="input-field" type="number" name="amount" placeholder="Customer Debt" step="10000" /><br /><br />
-
-            <input class="add-debt-button" type="submit" value="Add Debt!" />
+          <label> Add Customer Debt </label> <br><br>
+          <p> Customer name: </p>
+          <input type="text" class="inputfield" name="cusname" placeholder="Customer Name" /><br><br>
+          <p> Customer Debt: </p>
+          <input type="text" class="inputfield" name="amount" placeholder="Customer Debt" /><br><br>
+          <input type="submit" class="Buttons" value="Submit" />
         </form>
-
-        {{ message }}
-    </body>
+      </div>
+    </div>
+    {{ message }}
+  </body>
 </html>
