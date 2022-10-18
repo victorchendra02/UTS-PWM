@@ -1,9 +1,8 @@
-from argparse import Namespace
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 """
------ CREATE TABLE IN DATABASE -----
+----- CREATE TABLE IN DATABASE IN TERMINAL-----
 flask shell
 from app import db
 db.create_all()
