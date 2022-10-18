@@ -1,5 +1,7 @@
+from ast import Delete
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import delete
 
 """
 ----- CREATE TABLE IN DATABASE IN TERMINAL-----
@@ -107,3 +109,27 @@ def addtrans():
         return render_template('admin.html', message="Transaction added succesfully")
     else:
         return render_template('admin.html', message=f"No customer with name {customer_name}")
+
+@app.route('/del_debt', methods=['GET', 'POST'])
+def deldebt():
+    # get input
+    customer_name = request.form.get('cusname')
+
+    # check if customer exist
+    all_cus = Customer.query.order_by(Customer.customer_name).all()
+    all_cus_names = [cus.customer_name for cus in all_cus]
+
+    if customer_name in all_cus_names:  # if customer exist, continue; else, stop
+        # check if customer have any transactions
+        all_transactions = Transactions.query.order_by(Transactions.customer_name).all()
+        all_cus_trans = [transaction.customer_name for transaction in all_transactions]
+
+        if customer_name in all_cus_trans:   # if transaction exist, delete all transactions; else, stop
+            sql = delete(Transactions).where(Transactions.customer_name == customer_name) 
+            db.session.execute(sql)
+            db.session.commit()
+            return render_template('finance.html', message="Payment is succesfull")
+        else:
+            return render_template('finance.html', message=f"{customer_name} have no debt")
+    else:
+        return render_template('finance.html', message=f"No customer with name {customer_name}")
