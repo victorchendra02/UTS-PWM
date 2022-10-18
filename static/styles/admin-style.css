@@ -75,3 +75,36 @@ label {
     transition: 0.7s;
 }
 
+/* @import url("https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap");
+
+:root {
+    --input-field-width: 400px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+.input-field {
+    width: var(--input-field-width);
+    height: 40px;
+
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.add-debt-button {
+    width: var(--input-field-width);
+    height: 40px;
+
+    background-color: #2a5624;
+    color: rgb(249, 249, 249);
+    border-radius: 9px;
+}
+ */
+
