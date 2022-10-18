@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="styles/index-style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="styles/index-style.css" />
+        <link rel="shortcut icon" href="assets/debt.png" type="image/x-icon" />
 
-    <title>Dept App - Log In</title>
-  </head>
-  <body>
-    <h1>Welcome to Dept App</h1>
+        <title>Dept App - Log In</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-content">
+                <h1>Welcome to Dept App</h1>
+                <br />
 
-    <!-- <form action="">
-            <input type="text" id="" class="" placeholder="Username" /><br />
-            <input type="password" id="" class="" placeholder="Password" /><br /><br />
-            <input type="submit" value="Submit" />
-        </form> -->
+                <form action="/add_cus" method="post">
+                    <label> Username</label><br />
+                    <input type="text" id="" class="login-field" placeholder="Enter your username" /><br /><br />
+                    <label> Password</label><br />
+                    <input type="password" id="" class="login-field" placeholder="Password" /><br /><br />
+                    <input class="signin-button" type="submit" value="Sign in" /><br /><br />
+                </form>
 
-    <form action="/add_cus" method="post">
-      <input type="text" name="cusname" placeholder="Customer name" />
-      <input type="submit" value="Submit" />
-    </form>
+                <a href="/admin">admin</a><br />
+                <a href="/finance">finance</a><br />
+                <a href="/manager">manager</a><b></b>
+            </div>
 
-    <a href="/admin">admin</a>
-    <a href="/finance">finance</a>
-    <a href="/manager">manager</a>
-  </body>
+            <div class="right-content">
+                <img src="assets/wallpaper-login-3.jpg" class="img-responsive" alt="wallpaper" />
+            </div>
+        </div>
+    </body>
 </html>

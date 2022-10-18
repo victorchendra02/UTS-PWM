@@ -1,5 +1,55 @@
-* {
-    margin: 0;
-    padding: 0
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap");
+:root {
+    --input-field-width: 400px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+.container {
+    background-color: rgb(241, 241, 241);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-content {
+    background-color: rgb(241, 241, 241);
+    width: 50%;
+    /* height: auto; */
+    padding-left: 100px;
+}
+
+.right-content {
+    background-color: blue;
+    width: 50%;
+}
+
+.img-responsive {
+    width: 100%;
+    /* height: 100vh; */
+}
+
+.login-field {
+    width: var(--input-field-width);
+    height: 40px;
+
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.signin-button {
+    width: var(--input-field-width);
+    height: 40px;
+
+    background-color: #3f414d;
+    color: rgb(249, 249, 249);
+    border-radius: 9px;
+}
