@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    margin-left: 15%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+  }
+
+.center_box{
+    font-size: 25px;
+    border-radius: 10px;
+    border: 7px outset silver;
+    padding: 50px;
+}
+
+body {
+    background-image: url("../assets/wallpaper-admin.jpg");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+    background-attachment: fixed;
+    background-position: 20% 50%;
+}
+
+p {
+   color: gray; 
+   font-size: 20px;
+   font-weight: bold;
+   text-align: center;
+}
+
+
+h1 {
+    color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+label {
+    color: #cccccc;
+    font-weight: bolder;
+    margin-left: 7%;
+}
+
+.inputfield {
+    color: black;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+.Buttons {
+    text-align: center;
+    align-items: center;
+    margin-left: 32.5%;
+    width: 85px;
+    height: 30px;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.Buttons:hover {
+    background-color: silver;
+    transition: 0.7s;
+}
+

@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="stylesheet" href="styles/index-style.css" /> -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='styles/admin-style.css') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/debt.png') }}" />
+
+    <link rel="stylesheet" href="admin-style.css" />
 
     <title>Debt App - Admin</title>
   </head>
-  <body>
-    <h1>Welcome to Admin Page</h1>
-    <form action="/add_trans" method="post">
-      <input type="text" name="cusname" placeholder="Customer Name" />
-      <input type="text" name="amount" placeholder="Customer Debt" />
-      <input type="submit" value="Submit" />
-    </form>
 
+  <body>
+    <div class="center">
+      <div class="center_box">
+        <h1>Admin Page</h1>
+        <form action="/add_trans" method="post">
+          <label> Add Customer Debt </label> <br><br>
+          <p> Customer name: </p>
+          <input type="text" class="inputfield" name="cusname" placeholder="Customer Name" /><br><br>
+          <p> Customer Debt: </p>
+          <input type="text" class="inputfield" name="amount" placeholder="Customer Debt" /><br><br>
+          <input type="submit" class="Buttons" value="Submit" />
+        </form>
+      </div>
+    </div>
     {{ message }}
   </body>
 </html>
