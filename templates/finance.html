@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="stylesheet" href="styles/index-style.css" /> -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='styles/finance-style.css') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/debt.png') }}" />
 
     <title>Debt App - Finance</title>
   </head>
   <body>
-    <h1>Welcome to Finance Page</h1>
-    <form action="/del_debt" method="post">
-      <input type="text" name="cusname" placeholder="Customer Name" />
-      <input type="submit" value="Submit" />
-    </form>
+    <div class="center">
+      <div class="center_box">
+        <h1>Finance</h1>
+          <form action="/del_debt" method="post">
+            <label> Clear Customer Debt </label><br />
+            <input type="text" id="" class="inputfield" placeholder="Enter customer's name" /><br><br>
+            <input type="submit" class="Buttons" value="Insert" />            
+          </form>
+      </div>
+    </div>
 
     {{ message }}
   </body>
