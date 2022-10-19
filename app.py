@@ -82,18 +82,31 @@ def login():
     if len(password) == 0:
         return render_template('index.html', void_password="Provide a password!")
     else:
+        username_found = False
+        password_found = False
         for my_user in users_table:
             if username == my_user[0]:
+                username_found = True
                 if password == my_user[1]:
+                    password_found = True
                     print("BERHASIL")
                     # return ke page yang sesuai role **************
-                    return render_template('index.html', correct="Correct!")
-                else:
-                    print("SALAH PASSWORD")
-                    return render_template('index.html', wrong_password="Wrong password!")
-            else:
-                print("SALAH USERNAME")
-                return render_template('index.html', wrong_username="Wrong username!")
+                    return render_template(f'{my_user[2]}.html', correct="Correct!")
+        
+        if username_found == False:
+            print("SALAH USERNAME")
+            return render_template('index.html', wrong_username="Wrong username!")
+
+        if password_found == False:
+            print("SALAH PASSWORD")
+            return render_template('index.html', wrong_username="Wrong password!")
+
+            #     else:
+            #         print("SALAH PASSWORD")
+            #         return render_template('index.html', wrong_password="Wrong password!")
+            # else:
+            #     print("SALAH USERNAME")
+            #     return render_template('index.html', wrong_username="Wrong username!")
 
 
 @app.route('/add_cus', methods=['GET', 'POST'])
