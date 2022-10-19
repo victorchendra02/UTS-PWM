@@ -13,25 +13,29 @@
     <body>
         <div class="container">
             <div class="left-content">
-                <h1>Welcome to Dept App</h1>
-                <br />
+                <div class="inside-left-content">
+                    <h1>Welcome back</h1>
+                    <p>Please enter your details</p>
+                    <br />
 
-                <form action="/add_cus" method="post">
-                    <label> Username</label><br />
-                    <input type="text" id="" class="login-field" placeholder="Enter your username" /><br /><br />
-                    <label> Password</label><br />
-                    <input type="password" id="" class="login-field" placeholder="Password" /><br /><br />
-                    <input class="signin-button" type="submit" value="Sign in" /><br /><br />
-                </form>
+                    <form action="/add_cus" method="post">
+                        <label> Username</label><br />
+                        <input type="text" id="" class="login-field" placeholder="Enter your username" /><br /><br />
 
-                <a href="/admin">admin</a><br />
-                <a href="/finance">finance</a><br />
-                <a href="/manager">manager</a><b></b>
+                        <label> Password</label><br />
+                        <input type="password" id="" class="login-field" placeholder="Password" /><br /><br /><br />
+
+                        <!-- Button -->
+                        <input class="signin-button" type="submit" value="Sign in" /><br /><br />
+                    </form>
+
+                    <a href="/admin">admin</a>
+                    <a href="/finance">finance</a>
+                    <a href="/manager">manager</a>
+                </div>
             </div>
 
-            <div class="right-content">
-                <img src="{{ url_for('static', filename='assets/wallpaper-login-3.jpg') }}" class="img-responsive" alt="wallpaper" />
-            </div>
+            <img src="{{ url_for('static', filename='assets/wallpaper-login-5.jpg') }}" class="img-responsive" alt="wallpaper" />
         </div>
     </body>
 </html>
