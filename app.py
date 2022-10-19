@@ -20,14 +20,7 @@ users_table = [
     ("ladygaga", "1234", "admin"),
     ("chilling", "1234", "finance"),
     ("fiblters", "1234", "manager")
-         ]
-# class Users(db.Model):
-#     __tablename__ = 'users_table'
-#    
-#     username = db.Column('username', db.String(30))
-#     password = db.Column('password', db.String(255))
-#     roles = db.Column('roles', db.String(20)) # 3 possible roles: ["admin", "finance", "manager"]
-
+    ]
 
 class Transactions(db.Model):
     __tablename__ = 'transactions_table'
@@ -49,7 +42,7 @@ class Customer(db.Model):
     customer_name = db.Column(db.String(255))
     debt_total = db.Column(db.Integer)
 
-    # Create relation
+    # Create relationship
     transactions = db.relationship('Transactions', backref='transactions_table')
 
     def __init__(self, customer_name):
@@ -57,8 +50,8 @@ class Customer(db.Model):
         self.debt_total = 0
         
     def __str__(self):
-        return f"Customer: {self.customer_name}\
-                 Debt:     Rp {self.debt_total}"
+        return f"Customer: {self.customer_name}" \
+               f"Debt:     {self.debt_total}"
 
 
 @app.route('/')
