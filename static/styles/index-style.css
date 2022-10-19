@@ -79,6 +79,12 @@
 .left-content a {
     padding-right: 20px;
 }
+.inside-left-content .wrong-msg {
+    color: #b53c3c;
+}
+.inside-left-content .correct-msg {
+    color: #42b53c;
+}
 
 /* 4. Small devices (portrait tablets and large phones, 600px and up) */
 @media all and (max-width: 950px) {

@@ -50,8 +50,8 @@ class Customer(db.Model):
         self.debt_total = 0
         
     def __str__(self):
-        return f"Customer: {self.customer_name}" \
-               f"Debt:     {self.debt_total}"
+        return f"Customer:  {self.customer_name}\n" \
+               f"Debt    :  {self.debt_total}"
 
 
 @app.route('/')
@@ -71,9 +71,35 @@ def manager():
     return render_template('manager.html')
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    username = str(request.form.get('username'))
+    password = str(request.form.get('password'))
+
+    if len(username) == 0:
+        return render_template('index.html', void_username="Provide a username!")
+
+    if len(password) == 0:
+        return render_template('index.html', void_password="Provide a password!")
+    else:
+        for my_user in users_table:
+            if username == my_user[0]:
+                if password == my_user[1]:
+                    print("BERHASIL")
+                    # return ke page yang sesuai role **************
+                    return render_template('index.html', correct="Correct!")
+                else:
+                    print("SALAH PASSWORD")
+                    return render_template('index.html', wrong_password="Wrong password!")
+            else:
+                print("SALAH USERNAME")
+                return render_template('index.html', wrong_username="Wrong username!")
+
+
 @app.route('/add_cus', methods=['GET', 'POST'])
 def addcus():
     customer_name = request.form.get('cusname')
+    print(type(str(customer_name)))
     
     new_cus = Customer(customer_name)
     print(new_cus)

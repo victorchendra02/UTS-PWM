@@ -18,16 +18,27 @@
                     <p>Please enter your details</p>
                     <br />
 
-                    <form action="/add_cus" method="post">
+                    <form action="/login" method="post">
                         <label> Username</label><br />
-                        <input type="text" id="" class="login-field" placeholder="Enter your username" /><br /><br />
+                        <input type="text" name="username" class="login-field" placeholder="Enter your username" /><br /><br />
 
                         <label> Password</label><br />
-                        <input type="password" id="" class="login-field" placeholder="Password" /><br /><br /><br />
+                        <input type="password" name="password" class="login-field" placeholder="Password" /><br /><br /><br />
 
                         <!-- Button -->
                         <input class="signin-button" type="submit" value="Sign in" /><br /><br />
                     </form>
+
+                    <h3 class="wrong-msg">
+                        {{void_username}}
+                        {{void_password}}
+                        {{wrong_username}}
+                        {{wrong_password}}
+                    </h3>
+                    
+                    <h3 class="correct-msg">
+                        {{correct}}
+                    </h3>
 
                     <a href="/admin">admin</a>
                     <a href="/finance">finance</a>
