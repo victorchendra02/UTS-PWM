@@ -1,7 +1,7 @@
 from ast import Delete
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import delete
+from sqlalchemy import delete, update
 
 """
 ----- CREATE TABLE IN DATABASE IN TERMINAL-----
@@ -82,18 +82,31 @@ def login():
     if len(password) == 0:
         return render_template('index.html', void_password="Provide a password!")
     else:
+        username_found = False
+        password_found = False
         for my_user in users_table:
             if username == my_user[0]:
+                username_found = True
                 if password == my_user[1]:
+                    password_found = True
                     print("BERHASIL")
                     # return ke page yang sesuai role **************
-                    return render_template('index.html', correct="Correct!")
-                else:
-                    print("SALAH PASSWORD")
-                    return render_template('index.html', wrong_password="Wrong password!")
-            else:
-                print("SALAH USERNAME")
-                return render_template('index.html', wrong_username="Wrong username!")
+                    return render_template(f'{my_user[2]}.html', correct="Correct!")
+        
+        if username_found == False:
+            print("SALAH USERNAME")
+            return render_template('index.html', wrong_username="Wrong username!")
+
+        if password_found == False:
+            print("SALAH PASSWORD")
+            return render_template('index.html', wrong_username="Wrong password!")
+
+            #     else:
+            #         print("SALAH PASSWORD")
+            #         return render_template('index.html', wrong_password="Wrong password!")
+            # else:
+            #     print("SALAH USERNAME")
+            #     return render_template('index.html', wrong_username="Wrong username!")
 
 
 @app.route('/add_cus', methods=['GET', 'POST'])
@@ -120,9 +133,14 @@ def addtrans():
         names.append(customer.customer_name)
 
     if customer_name in names:
-        new_trans = Transactions(customer_name, debt_amount)        
+        # make new transactions
+        new_trans = Transactions(customer_name, debt_amount)  
+
+        # update customers debt_total in debt amount 
+        sql = update(Customer).where(Customer.customer_name == customer_name).values(debt_total= Customer.debt_total + debt_amount)
 
         db.session.add(new_trans)
+        db.session.execute(sql)
         db.session.commit()
 
         return render_template('admin.html', message="Transaction added succesfully")
@@ -145,7 +163,9 @@ def deldebt():
 
         if customer_name in all_cus_trans:   # if transaction exist, delete all transactions; else, stop
             sql = delete(Transactions).where(Transactions.customer_name == customer_name) 
+            sql2 = update(Customer).where(Customer.customer_name == customer_name).values(debt_total= 0)
             db.session.execute(sql)
+            db.session.execute(sql2)
             db.session.commit()
             return render_template('finance.html', message="Payment is succesfull")
         else:
