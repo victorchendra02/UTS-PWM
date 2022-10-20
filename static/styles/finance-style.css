@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +29,7 @@ body {
 }
 
 h1 {
-    color: #cccccc;
+    color: #e5e5e5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +46,11 @@ label {
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
+
     width: 80%;
+    height: 40px;
+
+    border-radius: 8px;
 }
 
 .Buttons {
@@ -58,6 +64,6 @@ label {
 }
 
 .Buttons:hover {
-    background-color: silver;
+    background-color: rgb(170, 170, 170);
     transition: 0.7s;
 }
