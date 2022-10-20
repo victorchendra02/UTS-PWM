@@ -1,7 +1,7 @@
 from ast import Delete
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import delete
+from sqlalchemy import delete, update
 
 """
 ----- CREATE TABLE IN DATABASE IN TERMINAL-----
@@ -133,9 +133,14 @@ def addtrans():
         names.append(customer.customer_name)
 
     if customer_name in names:
-        new_trans = Transactions(customer_name, debt_amount)        
+        # make new transactions
+        new_trans = Transactions(customer_name, debt_amount)  
+
+        # update customers debt_total in debt amount 
+        sql = update(Customer).where(Customer.customer_name == customer_name).values(debt_total= Customer.debt_total + debt_amount)
 
         db.session.add(new_trans)
+        db.session.execute(sql)
         db.session.commit()
 
         return render_template('admin.html', message="Transaction added succesfully")
@@ -158,7 +163,9 @@ def deldebt():
 
         if customer_name in all_cus_trans:   # if transaction exist, delete all transactions; else, stop
             sql = delete(Transactions).where(Transactions.customer_name == customer_name) 
+            sql2 = update(Customer).where(Customer.customer_name == customer_name).values(debt_total= 0)
             db.session.execute(sql)
+            db.session.execute(sql2)
             db.session.commit()
             return render_template('finance.html', message="Payment is succesfull")
         else:
