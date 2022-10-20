@@ -11,16 +11,18 @@
         <title>Debt App - Finance</title>
     </head>
     <body>
+        <a href="/">Home</a>
         <div class="center">
             <div class="center_box">
                 <h1>Finance</h1>
 
-                <form action="/del_debt" method="post">
+                <form action="/pay_debt" method="post">
                     <label> Clear Customer Debt </label><br />
-                    <input type="text" class="inputfield" name="cusname" placeholder="Enter customer's name" /><br /><br />
-                    <input type="submit" class="Buttons" value="Insert" />
+
+                    <label>Transaction ID:</label><br />
+                    <input type="number" min="0" step="1" class="input-field" name="trans_id" placeholder="Enter Transaction ID..." required /><br /><br />
+                    <input type="submit" class="Buttons" value="Pay now!" />
                 </form>
-                
                 <p style="color: white">{{ message }}</p>
             </div>
         </div>

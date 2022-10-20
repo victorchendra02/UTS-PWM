@@ -1,0 +1,34 @@
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap");
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 80px 90px 50px 90px;
+        text-align: center;
+    }
+
+    .make-it-widther{
+        width: 500px;
+        height: 40px;
+    }
+</style>
+<body>
+    <form action="/edit_update" method="post">
+        <input type="hidden" name="id_" value="{{id_}}">
+
+        <label>Name: </label>
+        <input class="make-it-widther" type="text" name="new_name" placeholder="Enter name..." value="{{name_}}" required /><br />
+
+        <label>Address: </label>
+        <input class="make-it-widther" type="text" name="new_address" placeholder="Enter address..." value="{{address}}" required /><br />
+
+        <label>Phone number: </label>
+        <input class="make-it-widther" type="tel" name="new_ph_number" placeholder="0895-1234-XXXX" value="{{ph_number}}" required /><br />
+        <input type="submit" value="Edit" />
+    </form>
+</body>
