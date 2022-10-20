@@ -4,9 +4,145 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+
+        <link rel="stylesheet" type=text/css href="{{url_for('static', filename='styles/manager-style.css')}}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='assets/debt.png')}}" />
+
+        <title>Dept App - Manager</title>
     </head>
     <body>
-        <h1>DONE!</h1>
+        <div class="header">
+            <a href="/" style="padding-right: 80px;">Home</a> <a href="/manager">Refresh</a>
+        </div>
+
+        <h1>Customer Table</h1>
+        <hr />
+        <div class="all-customer">
+            <table id="customer">
+                <tr>
+                    <th>ID Customer</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Debt Total</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                </tr>
+                {% for cus in all_customer%}
+                <tr>
+                    <form action="/edit" method="post">
+                        <td>{{cus[0]}}</td>
+                        <td>{{cus[1]}}</td>
+                        <td>{{cus[2]}}</td>
+                        <td>{{cus[3]}}</td>
+                        <td>{{cus[4]}}</td>
+                        <td>{{cus[5]}}</td>
+
+                        <input type="hidden" name="id_" value="{{cus[0]}}" />
+                        <input type="hidden" name="name_" value="{{cus[1]}}" />
+                        <input type="hidden" name="address" value="{{cus[2]}}" />
+                        <input type="hidden" name="ph_number" value="{{cus[3]}}" />
+                        <input type="hidden" name="debt_total" value="{{cus[4]}}" />
+                        <input type="hidden" name="is_active" value="{{cus[5]}}" />
+                        <td>
+                            <input type="submit" value="Edit: {{cus[1]}}" />
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h1>Transaction Table</h1>
+        <hr />
+        <div class="all-transaction">
+            <table id="transaction">
+                <tr>
+                    <th>ID Transaction</th>
+                    <th>ID Customer</th>
+                    <th>Date</th>
+                    <th>Debt Amount</th>
+                    <th>Remark</th>
+                    <th>Status Paid</th>
+                </tr>
+                {% for trans in all_transaction %}
+                <tr>
+                    <td>{{trans[0]}}</td>
+                    <td>{{trans[1]}}</td>
+                    <td>{{trans[2]}}</td>
+                    <td>{{trans[3]}}</td>
+                    <td>{{trans[4]}}</td>
+                    <td>{{trans[5]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h1>Add new customer</h1>
+        <hr />
+        <div class="add-customer">
+            <form action="/add_new_cus" method="post">
+                <label>New customer name: </label>
+                <input type="text" name="new_name" placeholder="Enter name..." required /><br />
+                <label>New customer address: </label>
+                <input type="text" name="address" placeholder="Enter address..." value="Jl. Industri Raya BLOK B14, Kompleks RMCI" required /><br />
+                <label>New customer phone number: </label>
+                <input type="tel" name="phone_number" placeholder="0895-1234-XXXX" value="0895-9211-1768" required /><br />
+                <input type="submit" value="ADD NEW!" />
+            </form>
+            <br /><br />
+            {{message}}
+        </div>
+
+        <h1>Delete customer</h1>
+        <hr />
+        <div class="del-customer">
+            <form action="/del_cus" method="post">
+                <label>customer ID: </label>
+                <input type="number" min="0" name="cus_id" placeholder="Enter ID..." required /><br />
+                <input type="submit" value="DELETE CUSTOMER!" />
+            </form>
+            <br /><br />
+            {{message}}
+        </div>
+
+        <h1>Disable Customer</h1>
+        <hr />
+        <div class="disable-customer">
+            <form action="/disable_cus" method="post">
+                <label>customer id: </label>
+                <input type="number" name="id" placeholder="Enter ID..." required /><br />
+                <input type="submit" value="DISABLE CUSTOMER!" />
+            </form>
+            <br /><br />
+            {{message}}
+        </div>
+
+        <h1>Enable Customer</h1>
+        <hr />
+        <div class="enable-customer">
+            <form action="/enable_cus" method="post">
+                <label>customer id: </label>
+                <input type="number" name="id" placeholder="Enter ID..." required /><br />
+                <input type="submit" value="ENABLE CUSTOMER!" />
+            </form>
+            <br /><br />
+            {{message}}
+        </div>
+
+        <h1>Cancel Payment</h1>
+        <hr />
+        <div class="void-function">
+            <form action="/void_func" method="post">
+                <label>ID Transaction: </label>
+
+                <input type="number" min="0" name="trans_id" placeholder="Enter ID..." required /><br />
+                <input type="submit" value="Cancel payment" />
+            </form>
+            <br /><br />
+            {{message}}
+        </div>
+
+ 
     </body>
 </html>
