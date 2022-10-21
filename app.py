@@ -252,7 +252,6 @@ def edit_customer():
     new_address = str(request.form.get('new_address'))
     new_ph_number = str(request.form.get('new_ph_number'))
     print(id_, new_name_, new_address, new_ph_number)
-    print("ANJINGG")
 
     edit_profile(id_, new_name_, new_address, new_ph_number)
     
