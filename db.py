@@ -140,7 +140,7 @@ def update_customer_after_void(id_cus, debt_amount):
 
 
 def edit_profile(id_, new_name, new_address, new_ph_number):
-    sql = text(f"UPDATE customer_table SET customer_name = '{new_name}' WHERE id_customer = {id_}")
+    sql = text(f"UPDATE customer_table SET customer_name = '{new_name}', address = '{new_address}', phone_number = {new_ph_number} WHERE id_customer = {id_}")
     result = db.engine.execute(sql)
     return
     
